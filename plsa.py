@@ -48,8 +48,16 @@ class Corpus(object):
         # #############################
         # your code here
         # #############################
-        
-        pass    # REMOVE THIS
+        num_docs = 0
+        documents = self.documents
+        with open(self.documents_path) as file:
+            for documents in file.readlines():
+                # use rstrip, followed by strip to get the words for each line.
+                documents = documents.rstrip('}\n ').strip('0\t').strip('1\t').split(' ')
+                num_docs = num_docs + 1
+                self.documents.append(documents)
+            self.number_of_documents = num_docs
+        #pass    # REMOVE THIS
 
     def build_vocabulary(self):
         """
